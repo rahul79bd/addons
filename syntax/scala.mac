@@ -1,0 +1,43 @@
+'*******************************************************************************
+' EverEdit Syntax File
+' Language:    Scala
+' Maintainer:  www.everedit.net
+' History:
+'   2013/12/09 First Version
+'*******************************************************************************
+Include( ".\const.mac" )
+
+Set scala=CreateParser()
+
+Set rComment1=scala.CreateRegion(COLOR_COMMENT1, "+//+", "$", False )
+Set rComment2=scala.CreateRegion(COLOR_COMMENT2, "+/*+", "+*/+", False )
+
+Set rString1=scala.CreateStringRegion( COLOR_STRING1, "'", "\", True )
+Set rString2=scala.CreateStringRegion( COLOR_STRING2, """", "\", True )
+
+'Reserved words
+Set iWord1=scala.CreateWord(COLOR_WORD1, "abstract case catch class def do else extends false final finally for forSome if implicit import lazy match new null object override package private protected requires return sealed super this throw trait true try type val var while with yield", True)
+
+'Predefined classes
+Set iWord2=scala.CreateWord(COLOR_WORD2, "AbstractSyntax Actor ActorProxy Annotation ANY AnyHedgeRHS AnyTreeRHS Application AppliedType Apply Array ArrayBuffer ArrayList Assign Atom AttListDecl AttrDecl Attribute Base BaseBerrySethi BasicTransformer BeanDescription BeanDisplayName BeanInfo BeanInfoSkip BeanProperty Benchmark BigDecimal BigInt Binder Binders BindingParsers BitSet Block BooleanRef BoxedAnyArray BoxedArray BoxedBooleanArray BoxedByteArray BoxedCharArray BoxedDoubleArray BoxedFloatArray BoxedIntArray BoxedLongArray BoxedObjectArray BoxedShortArray BoxedUnit BoxesRunTime Buffer BufferedIterator BufferedSource BufferIterator BufferProxy BufferWrapper ByNameFunction BytePickle ByteRef CachedFileStorage Cell Channel CharArrayPosition CharArrayReader CharInputStreamIterator CharRef CharSequenceReader CircularIncludeException Class ClassDef ClassfileAnnotation ClassfileAttribute cloneable CloneableCollection Code Collection CollectionProxy CollectionWrapper Comment Console ConsoleLogger ConsRHS ConstructingHandler ConstructingParser ContentModel ContentModelParser Conversions CountedIterator CustomObjectInputStream Debug Decl DEFAULT DefaultDecl DefaultEntry DefaultMapModel DefaultMarkupHandler DefDef deprecated DetWordAutom DFAContentModel DocBreak DocCons DocGroup DocNest DocNil DocText DocType Document DoubleLinkedList DoubleRef DTD DtdTypeSymbol DynamicVariable Either Elem ElemDecl ELEMENTS ElementValidator EMPTY EmptyHedgeRHS EmptyMap EmptySet EncodingHeuristics End EntityDecl EntityDef EntityRef Enumeration Equiv EvComment EvElemEnd EvElemStart EvEntityRef EvProcInstr EvText ExceptionHandling Exit ExitActorException Expression ExtDef ExternalID ExternalSources FactoryAdapter FatalError Field FJTask FJTaskRunner FJTaskRunnerGroup FJTaskScheduler2 FlatHashTable FloatRef FreshNameCreator Function Future Futures GBLeaf GBNode GBTree GlobalSymbol Goto Group HashEntry HashMap HashSet HashTable Hashtable HasKeyValue HedgeRHS History Ident IdentityHashMap If IFJTaskRunnerGroup ImmutableIterator ImmutableMapAdaptor ImmutableSetAdaptor ImplicitConversions ImplicitMethodType IMPLIED Include Inclusion Index IndexedStorage inline INode InputChannel InsertTree IntDef internedSymbols IntRef IScheduler Iterable IterableProxy IterableWrapper Iterator ITree JavaMapAdaptor JavaSerializer JavaSetAdaptor JavaTokenParsers jolib JSON KillActorException LabelledRHS LabelSymbol Left Lexer Lexical LinkedHashMap LinkedHashSet LinkedList LinkedListQueueCreator LinkedNode LinkedQueue List ListBuffer ListMap ListQueueCreator ListSerializeEnd ListSet Literal LocalMethod LocalSymbol LocalValue Location Lock Logged LoggedNodeFactory LongRef MailBox Main MakeValidationException MalformedAttributeException Manifest Map Mappable MapProxy MapWrapper MarkupDecl MarkupHandler MarkupParser MatchError Math Message MessageQueue MessageQueueElement MetaData Method MethodType MIXED mkTilde MultiMap MutableIterable MutableIterator MutableList MutableSeq NA NamedSend NamedType NamespaceBinding native NetKernel New Nil NoBindingFactoryAdapter Node NodeBuffer NodeFactory NodeSeq NodeTraverser noinline NondetWordAutom None NonLocalReturnException NoPosition NoPrefix NoSymbol NotationDecl NotDefinedError NotNull NoType Null Number ObjectRef ObservableBuffer ObservableMap ObservableSet OffsetPosition ops Option Ordered Ordering OutputChannel Page PagedSeq PagedSeqReader ParameterEntityDecl ParsedEntityDecl Parser Parsers Parsing PartialFunction PartiallyOrdered PartialOrdering PCDATA PCData PCDataMarkupParser PEReference PhantomReference pilib Platform PointedHedgeExp PolyType Position Positional Predef PrefixedAttribute PrefixedType PrettyPrinter Print PriorityQueue PriorityQueueProxy ProcInstr Product Properties Proxy PublicID Publisher QNode Queue QueueModule QueueProxy QuitException Random RandomAccessSeq Range Ranged Reaction Reader RedBlack Reference ReferenceQueue ReferenceWrapper Regex RegexParsers RegexTest remote RemoteActor Remove Reply ReplyTo REQUIRED Reset ResizableArray Responder RevertableHistory RewriteRule RichBoolean RichByte RichChar RichDouble RichException RichFloat RichInt RichLong RichShort RichSorting RichString RichStringBuilder Right RollbackIterator RootSymbol RuleTransformer ScalaBeanInfo ScalaObject ScalaRunTime Scanner Scanners Scheduler Script Scriptable Select SendTo Seq SeqIterator SeqProxy serializable Serializer SerialVersionUID Service Set SetProxy SetStorage SetWrapper ShortRef SimpleTokenizer SingleLinkedList SingleThreadedScheduler SingleType SoftReference Some Sorted SortedMap SortedMapWrapper SortedSet SortedSetWrapper Sorting Source SpecialNode Stack StackProxy StandardTokenParsers Start StaticAnnotation StaticAttribute StdLexical StdTokenParsers StdTokens Str Stream StreamCons StreamReader StringAdd StringBuilder Subscriber SubsetConstruction SUnit Super SuspendActorException Symbol SyncChannel SynchronizedBuffer SynchronizedMap SynchronizedPriorityQueue SynchronizedQueue SynchronizedSet SynchronizedStack SyncSend SyncSendTo SyncVar SyntaxError SystemID Target TcpService TcpServiceWorker Template Terminate Tester Tests Text TextBuffer This ThisType throws TickedScheduler TIMEOUT TimerThread TokenParsers Tokens TokenTests TopScope transient Tree TreeMap TreeRHS TreeSet Tuple Type TypeApply TypeBounds TypeConstraint TypedCode TypeField TypeSymbol UnavailableResourceException UnbalancedTreeMap unchecked Undoable UninitializedError Unparsed UnparsedEntityDecl UnprefixedAttribute unsealed Update UTF8Codec Utility ValDef ValidatingMarkupHandler ValidationException volatile WeakHashMap WeakReference WordBerrySethi WordExp WorkerThread Xhtml XhtmlEntities XhtmlParser XIncludeException XIncludeFilter XIncluder XML XMLEvent XMLEventReader", True)
+
+'operators
+Set iOperator=scala.CreateItem(COLOR_OPERATOR, "[\{\}\(\)\+\-\*\\=%&\^!~\|<>?\.,:;@\$\[\]]",False )
+
+
+scala.AddRegion( rComment1 )
+scala.AddRegion( rComment2 )
+scala.AddRegion( rString1 )
+scala.AddRegion( rString2 )
+scala.AddWord( iWord1 )
+scala.AddWord( iWord2 )
+scala.AddItem( iOperator )
+
+'number
+scala.AddItem( scala.CreateItem(COLOR_NUMBER, "(?<!\w)[+-]?([1-9][0-9]*\.?[0-9]*[e]?[-]?[0-9]*\.?[0-9]*|0([0-7]+|x[0-9A-Fa-f]+)|(?<!-)0(?!\.)|0\.[0-9]*[e]?[-]?[1-9][0-9]*)(?!\w)", False) )
+
+scala.IndentText "\{\s*$", False,  "}\s*$", False
+scala.FoldText "\{", False, "\}", False
+scala.SetPairs( "[]''""{}()" )
+scala.CommentLine( "//" )
+scala.CommentBlock "/*", "*/"
