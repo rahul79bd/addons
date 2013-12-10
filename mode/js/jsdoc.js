@@ -187,7 +187,7 @@
         fullCurrentLine: "",
         nextLine: "",
         parser: jsParser,
-        
+
         inDocComment: function(line) {
             return /^\s*\/\*\*/.test(line) || /^\s*\*/.test(line);
         },
@@ -239,7 +239,7 @@
             }
 
             if (syntax == "Java") {
-                this.parser = JsDocJavaParser;
+                this.parser = javaParser;
             }
             var out = this.parser.parseFunction.call(this.parser, nextLine);
             if (out) {
