@@ -1,7 +1,7 @@
 '*******************************************************************************
 ' EverEdit Syntax File
 ' Language:    EverEdit Macro
-' Maintainer:  www.everedit.net  
+' Maintainer:  www.everedit.net
 ' History:
 '   2012/02/15 First Version
 '   2013/05/01 Added some new words
@@ -18,7 +18,7 @@ Set wWordObject=vbs.CreateWord( COLOR_WORD2, "App Document Help HexDoc Menu Outp
 wWordObject.AutoCase=True
 
 'Get/Set of Objects
-Set wWordProperty=vbs.CreateWord( COLOR_WORD3, "ActiveDoc ActiveHex AppPath CaretCol CaretLine CaretPos Codepage Col CommandBox Dirty document EndOfLine Line LineCount OutputWindow PathName Scope SelEndPos SelStartPos SelText SoftTab Syntax TabStop Text CaretPos Codepage Col GroupUndo Line SelText SoftTab Syntax TabStop Text", False )
+Set wWordProperty=vbs.CreateWord( COLOR_WORD3, "ActiveDoc ActiveHex AppPath CaretCol CaretLine CaretPos Codepage Col CommandBox Dirty document EndOfLine Line LineCount PathName Scope SelEndPos SelStartPos SelText SoftTab Syntax TabStop Text CaretPos Codepage Col GroupUndo Line SelText SoftTab Syntax TabStop Text", False )
 wWordProperty.AutoCase=True
 
 'Functions in syntax
