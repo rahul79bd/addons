@@ -5,5 +5,5 @@ Command0=3,Beautify JS,${AppPath}\mode\js\jsBeautify.ejs
 [Menu1]
 Command0=3,JSHint,${AppPath}\mode\js\jshint.ejs
 [Menu2]
-Key=Enter
+Key=A+Enter
 Command0=3,JsDoc,${AppPath}\mode\js\JsDoc.ejs
