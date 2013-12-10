@@ -1,0 +1,5 @@
+[Menu]
+Title=Java
+[Menu0]
+Key=Enter
+Command0=3,JavaDoc,${AppPath}\mode\js\JsDoc.ejs
