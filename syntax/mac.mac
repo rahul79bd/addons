@@ -10,7 +10,7 @@
 Include( ".\vbs.mac" )
 
 'Functions
-Set wWordMacro=vbs.CreateWord( COLOR_WORD1, "AddSel Clear ClearJumpPattern ClearSel close CommentBlock CommentLine CreateMenu Delete FindAll1 GetHwnd GetLineLength GetLineText GetSize GetText GetWord GetWrapCount HasSel Hide Include IndentInsert Insert InsertAt InsertBinary InsertChar InsertSnippet InsertText MoveCaret NewDoc Offset2Pos OpenDoc OutputLine OutputText Popup Pos2Offset Refresh ReplaceAll SendCommand SendCommandEx SetCaretPos SetJumpPattern SetSel SetSyntax Show ShowHtmlHelp ShowInputBox ShowMsgBox Sleep Terminate WebOutput WebPreview write writeln", False)
+Set wWordMacro=vbs.CreateWord( COLOR_WORD1, "AddSel Clear ClearJumpPattern ClearSel close CommentBlock CommentLine CreateMenu Delete FindAll1 GetHwnd GetLineLength GetLineText GetSize GetText GetWord GetWrapCount HasSel Hide Include IndentInsert Insert InsertAt InsertBinary InsertChar InsertSnippet InsertText MoveCaret NewDoc Offset2Pos OpenDoc OutputLine OutputText Popup Pos2Offset Refresh ReplaceAll ScriptName ScriptPath SendCommand SendCommandEx SetCaretPos SetJumpPattern SetSel SetSyntax Show ShowHtmlHelp ShowInputBox ShowMsgBox Sleep Terminate WebOutput WebPreview write writeln", False)
 wWordMacro.AutoCase=True
 
 'Objects in macro

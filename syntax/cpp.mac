@@ -34,7 +34,7 @@ cpp.AddRegion( rString2 )
 cpp.AddItem( cpp.CreateItem(COLOR_FUNCTION, "[\w_][\w\d_]+(?=\()", False) )
 
 'Reserved words
-cpp.AddWord( cpp.CreateWord(COLOR_WORD1, "break case catch cerr cin class continue cout default delete do else explicit for friend goto if namespace new operator private protected public return switch template this throw try using virtual wchar_t while", True ) )
+cpp.AddWord( cpp.CreateWord(COLOR_WORD1, "break case catch cerr cin class continue cout default delete do else explicit false for friend goto if namespace new operator private protected public return switch template this throw true try using virtual wchar_t while", True ) )
 
 'C data types & structures & storage modifiers & operators
 cpp.AddWord( cpp.CreateWord(COLOR_WORD2, "int long short char void signed unsigned float double _Complex _Imaginary _Bool bool complex imaginary typedef struct union enum static register auto volatile extern const fortran restrict inline sizeof", True ) )

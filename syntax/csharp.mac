@@ -47,17 +47,8 @@ cs.AddItem( cs.CreateItem(COLOR_MACRO, "^\s*#\w+",False ) )
 'number
 cs.AddItem( cs.CreateItem(COLOR_NUMBER, "\b\d+\b", False) )
 
-'folding
-'Call cs.FoldText( "\{", False )
-'Call cs.UnfoldText( "\}", False )
-'folding support #region-Nolan
-Call cs.FoldText( "#region|\{", False )
-Call cs.UnfoldText( "#endregion|\}", False )
-
-Call cs.IndentText( "\[|{|\w+:$", False )
-Call cs.UnindentText( "^\s*}|\]$", False )
-
-Call cs.SetPairs( "[]{}()""""''" )
-
-Call cs.CommentLine("//")
-Call cs.CommentBlock("/*", "*/")
+cs.FoldText "#region|\{", False, "#endregion|\}", False
+cs.IndentText "\[\s*$|{\s*$|\w+:\s*$", False, "^\s*}\s*|^\s*\]$", False
+cs.SetPairs "[]{}()""""''"
+cs.CommentLine "//"
+cs.CommentBlock "/*", "*/"
