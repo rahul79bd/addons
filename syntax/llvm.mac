@@ -1,0 +1,70 @@
+'*******************************************************************************
+' EverEdit Syntax File
+' Language:    LLVM IR
+' Maintainer:  qtxie  
+' History:
+'   2014/1/1 First Version
+'*******************************************************************************
+Include( ".\const.mac" )
+
+Set llvm=Parser.CreateParser()
+'llvm.WordChars=""
+
+'comment
+Set rLineComment=llvm.CreateRegion( COLOR_COMMENT1, "+;+", "$", True )
+llvm.AddRegion( rLineComment )
+
+'Syntax-highlight dejagnu test commands.
+rLineComment.AddItem( llvm.CreateItem( COLOR_MACRO, ";\s*RUN:.*$", True ) )
+rLineComment.AddItem( llvm.CreateItem( COLOR_MACRO, ";\s*PR\d*\s*$", True ) )
+rLineComment.AddItem( llvm.CreateItem( COLOR_MACRO, ";\s*END\.\s*$", True ) )
+rLineComment.AddItem( llvm.CreateItem( COLOR_MACRO, ";\s*XFAIL:.*$", True ) )
+
+'add todo to comment
+Set iTodo=llvm.CreateItem( COLOR_HIGHLIGHT2, "\b(TODO|FIX|FIXME|TBD)\b", True )
+rLineComment.AddItem( iTodo )
+
+'double quote string
+Set rString2=llvm.CreateStringRegion( COLOR_STRING2, """", "\", False )
+llvm.AddRegion( rString2 )
+
+' Obsolete keywords.
+llvm.AddWord( llvm.CreateWord(COLOR_HIGHLIGHT1, "getresult begin end", True) )
+
+' Instructions.
+' The true and false tokens can be used for comparison opcodes, but it's
+' much more common for these tokens to be used for boolean constants.
+llvm.AddWord( llvm.CreateWord(COLOR_WORD1, "add addrspacecast alloca and arcp ashr atomicrmw bitcast br call cmpxchg eq exact extractelement extractvalue fadd fast fcmp fdiv fence fmul fpext fptosi fptoui fptrunc free frem fsub getelementptr icmp inbounds indirectbr insertelement insertvalue inttoptr invoke landingpad load lshr malloc max min mul nand ne ninf nnan nsw nsz nuw oeq oge ogt ole olt one or ord phi ptrtoint resume ret sdiv select sext sge sgt shl shufflevector sitofp sle slt srem store sub switch trunc udiv ueq uge ugt uitofp ule ult umax umin une uno unreachable unwind urem va_arg xchg xor zext", True) )
+
+' Keywords.
+llvm.AddWord( llvm.CreateWord(COLOR_WORD1, "acq_rel acquire sanitize_address addrspace alias align alignstack alwaysinline appending arm_aapcs_vfpcc arm_aapcscc arm_apcscc asm atomic available_externally blockaddress byval c catch cc ccc cleanup coldcc common constant datalayout declare default define deplibs dllexport dllimport except extern_weak external fastcc filter gc global hidden initialexec inlinehint inreg intel_ocl_bicc inteldialect internal linker_private linker_private_weak linkonce linkonce_odr localdynamic localexec minsize module monotonic msp430_intrcc naked nest noalias nocapture noimplicitfloat noinline nonlazybind noredzone noreturn nounwind optnone optsize personality private protected ptx_device ptx_kernel readnone readonly release returns_twice sanitize_thread sanitize_memory section seq_cst sideeffect signext singlethread spir_func spir_kernel sret ssp sspreq sspstrong tail target thread_local to triple unnamed_addr unordered uwtable volatile weak weak_odr x86_fastcallcc x86_stdcallcc x86_thiscallcc x86_64_sysvcc x86_64_win64cc zeroext", True) )
+
+'number
+llvm.AddItem( llvm.CreateItem(COLOR_NUMBER, "[-+]?\d+(\.\d+)?(E[-+]?[0-9]+)?", False) )
+
+'hex number
+llvm.AddItem( llvm.CreateItem(COLOR_NUMBER, "\b0x[a-fA-F0-9]+\b", False) )
+
+' Types
+' Types also include struct, array, vector, etc. but these don't
+' benefit as much from having dedicated highlighting rules.
+llvm.AddWord( llvm.CreateWord(COLOR_WORD2, "void half float double x86_fp80 fp128 ppc_fp128 label metadata x86_mmx type label opaque", True) )
+llvm.AddItem(llvm.CreateItem(COLOR_WORD2, "i\d+", True))
+
+'label
+llvm.AddItem( llvm.CreateItem(COLOR_TAG, "[-a-zA-Z$._][-a-zA-Z$._0-9]*:", False) )
+
+'Identifier
+llvm.AddItem( llvm.CreateItem(COLOR_DEFAULT, "[%@][-a-zA-Z$._][-a-zA-Z$._0-9]*", False) )
+
+'Misc
+llvm.AddWord( llvm.CreateWord(COLOR_WORD1, "true false zeroinitializer undef null", True) )
+
+'folding
+llvm.FoldText "\{", False, "\}", False
+
+llvm.IndentText "({|\w+:)$", False, "^\s*}$", False
+
+llvm.CommentLine(";")
+
+llvm.SetPairs(  "[]{}()""""" )
