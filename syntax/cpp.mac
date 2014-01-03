@@ -68,7 +68,7 @@ cpp.AddItem( cpp.CreateItem(COLOR_VAR, "(?<=\bcase\b).*?:", False) )
 
 cpp.AddSnippet "c.snippet"
 cpp.FoldText "\{", False, "\}", False
-cpp.IndentText "(\[|{|\w+:)$", False, "^\s*}|\]$", False
+cpp.IndentText "\[\s*$|{\s*$|\w+:\s*$", False, "^\s*}\s*|^\s*\]$", False
 
 cpp.CommentLine("//")
 cpp.CommentBlock "/*", "*/"

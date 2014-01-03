@@ -152,7 +152,7 @@ void CommentBlock(string strCommentOn, string strCommnetOff, bool bComment);
 void write(string strText);
 void writeln(string strText);
 void close();
-bool ExportTo(string strPathName, int nCodepage=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
+bool ExportTo(string strPathName, int nEncoding=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
  
 //属性
 Pos SelStartPos;
@@ -167,7 +167,7 @@ string EndOfLine;
 void GroupUndo;//set
 Pos CaretPos;//get,set
 string SelText;//get,set
-int Codepage;//get,set
+int Encoding;//get,set
 int TabStop;//get,set
 bool SoftTab;//get,set
 string Text;//get,set
@@ -302,8 +302,8 @@ void close();
 ```
 
 ```
-bool ExportTo(string strPathName, int nCodepage=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
-导出当前buffer到指定路径(如果文档被修改，则连同被修改的内容一起导出)。strPathName:目的路径；nCodepage:导出为指定编码的文件；bBom:是否添加BOM(仅在UTF 16/8下有效)；nEol:换行符的类型。换行符取值如下：
+bool ExportTo(string strPathName, int nEncoding=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
+导出当前buffer到指定路径(如果文档被修改，则连同被修改的内容一起导出)。strPathName:目的路径；nEncoding:导出为指定编码的文件；bBom:是否添加BOM(仅在UTF 16/8下有效)；nEol:换行符的类型。换行符取值如下：
 
 WIN=1
 UNIX=2

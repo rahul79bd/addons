@@ -161,7 +161,7 @@ void CommentBlock(string strCommentOn, string strCommnetOff, bool bComment);
 void write(string strText);
 void writeln(string strText);
 void close();
-bool ExportTo(string strPathName, int nCodepage=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
+bool ExportTo(string strPathName, int nEncoding=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
  
 //properties
 Pos SelStartPos;
@@ -176,7 +176,7 @@ string EndOfLine;
 void GroupUndo;//set
 Pos CaretPos;//get,set
 string SelText;//get,set
-int Codepage;//get,set
+int Encoding;//get,set
 int TabStop;//get,set
 bool SoftTab;//get,set
 string Text;//get,set
@@ -340,11 +340,11 @@ simulate some js's funtions.
 ```
 
 ```
-bool ExportTo(string strPathName, int nCodepage=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
+bool ExportTo(string strPathName, int nEncoding=/*same as document*/, bool bBom=/*same as document*/, int nEol=/*same as document*/)
 Export current buffer into a file.
 
 strPathName: destination directory
-nCodepage: codepage, utf-8 is 65001 native encoding is 0.
+nEncoding: encoding, utf-8 is 65001 native encoding is 0.
 bBom: add bom?
 nEol: formant of line break(WIN=1,UNIX=2,MAC=3)
 ```
