@@ -1,0 +1,11 @@
+/**
+ * ptma(ptma@163.com)
+ */
+Include(App.AppPath + "\\macro\\Unicode\\unicode.js");
+var pos = App.ActiveDoc.CaretPos;
+if (App.ActiveDoc.HasSel()) {
+    App.ActiveDoc.SelText = Unicode.toChinese(App.ActiveDoc.SelText);
+} else {
+    App.ActiveDoc.Text = Unicode.toChinese(App.ActiveDoc.Text);
+}
+App.ActiveDoc.SetCaretPos(pos.Line, pos.Col, true);
