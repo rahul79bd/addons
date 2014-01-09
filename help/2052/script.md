@@ -172,6 +172,7 @@ int TabStop;//get,set
 bool SoftTab;//get,set
 string Text;//get,set
 string Syntax;//get,set
+int Hwnd;//get
 ```
 
 ###重要函数说明
@@ -311,8 +312,13 @@ MAC=3
 ```
 
 ```
-Syntax
+doc.Syntax
 获取或者设置当前语法文件的着色模式，该设置回影响到对应的模式和自定义工具等。
+```
+
+```
+doc.Hwnd
+获取该窗口的句柄，该句柄是唯一的，可以用于区分每一个doc。
 ```
 
 ##Menu

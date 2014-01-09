@@ -181,6 +181,7 @@ int TabStop;//get,set
 bool SoftTab;//get,set
 string Text;//get,set
 string Syntax;//get,set
+int Hwnd;//get
 ```
 
 ###Document' Functions
@@ -347,6 +348,12 @@ strPathName: destination directory
 nEncoding: encoding, utf-8 is 65001 native encoding is 0.
 bBom: add bom?
 nEol: formant of line break(WIN=1,UNIX=2,MAC=3)
+```
+
+
+```
+doc.Hwnd
+Get the unique handle of this document. 
 ```
 
 ##Menu
