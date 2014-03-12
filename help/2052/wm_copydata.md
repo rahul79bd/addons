@@ -11,10 +11,16 @@ EverEdit支持使用WM_COPYDATA进行简单的数据传递。支持文本的获�
 #define COPYDATA_GETLINETEXTUTF8		106
 #define COPYDATA_INSERTTEXTW			107
 #define COPYDATA_INSERTTEXTUTF8			108
-#define COPYDATA_MOVECARET				109
+#define COPYDATA_SETCARET				109
 #define COPYDATA_DELETETEXT				110
 #define COPYDATA_SETSEL					111
 #define COPYDATA_GETTEXTASFILEUTF8		112
+#define COPYDATA_HASNORMALSEL			113
+#define COPYDATA_GETNORMALSELW			114
+#define COPYDATA_GETNORMALSELUTF8		115
+#define COPYDATA_GETNORMALSELASFILEUTF8	116
+#define COPYDATA_EXECUTESCRIPT_ANSIPATH	117
+#define COPYDATA_EXECUTESCRIPT_UTF8PATH	118
 ```
 
 ###COPYDATA_GETTEXTW
@@ -125,13 +131,51 @@ cds.cbData = _countof(arr)*sizeof(int);
 ```
 
 ###COPYDATA_GETTEXTASFILEUTF8
-以UTF8形式把所有文本导出到临时文件夹中EESHAREFILE.txt的文本中。
+以UTF8形式把所有文本导出到临时文件夹中EE_SHAREFILE.txt的文本中。
 ```
 COPYDATASTRUCT cds;
 cds.dwData = COPYDATA_GETTEXTASFILEUTF8;
 cds.lpData = NULL;
 cds.cbData = 0;
-int size=::SendMessage(hWnd, WM_COPYDATA, (WPARAM)m_hWnd, (LPARAM)&cds);
+BOOL ret=::SendMessage(hWnd, WM_COPYDATA, (WPARAM)m_hWnd, (LPARAM)&cds);
 ```
+
+###COPYDATA_HASNORMALSEL
+当前文档是否含有普通的选区
+```
+COPYDATASTRUCT cds;
+cds.dwData = COPYDATA_HASNORMALSEL;
+cds.lpData = NULL;
+cds.cbData = 0;
+BOOL ret=::SendMessage(hWnd, WM_COPYDATA, (WPARAM)m_hWnd, (LPARAM)&cds);
+```
+
+###COPYDATA_GETNORMALSELW
+以UTF16形式获取普通选区的文本。发送方需要响应WM_COPYDATA并获取EverEdit发送的文本数据。
+
+###COPYDATA_GETNORMALSELUTF8
+以UTF8形式获取普通选区的文本。发送方需要响应WM_COPYDATA并获取EverEdit发送的文本数据。
+
+###COPYDATA_GETNORMALSELASFILEUTF8
+以UTF8形式把普通选区的文本导出到临时文件夹中EE_SHAREFILE.txt的文本中。
+```
+COPYDATASTRUCT cds;
+cds.dwData = COPYDATA_GETNORMALSELASFILEUTF8;
+cds.lpData = NULL;
+cds.cbData = 0;
+BOOL ret=::SendMessage(hWnd, WM_COPYDATA, (WPARAM)m_hWnd, (LPARAM)&cds);
+```
+
+###COPYDATA_EXECUTESCRIPT_ANSIPATH
+###COPYDATA_EXECUTESCRIPT_UTF8PATH
+让EverEdit执行一个指定的脚本。ANSI和UTF8指该脚本路径的编码方式。
+```
+COPYDATASTRUCT cds;
+cds.dwData = COPYDATA_EXECUTESCRIPT_ANSIPATH;
+cds.lpData = "c:/my.mac";
+cds.cbData = 0;
+BOOL ret=::SendMessage(hWnd, WM_COPYDATA, (WPARAM)m_hWnd, (LPARAM)&cds);
+```
+
 
 注意：凡是需要主动响应EverEdit返回数据的时候（主要是获取文本的时候），wParam必须要传递有效的HWND。
