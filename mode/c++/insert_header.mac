@@ -1,8 +1,0 @@
-Set doc=App.ActiveDoc
-header="/*----------------------------------------------" & vbCrLf & _
-"File: " & doc.PathName & vbCrLf  & _
-"Date: " & Now() & vbCrLf  & _
-"Author: xx@xxx.com" & vbCrLf  & _
-"----------------------------------------------*/" & vbCrLf
-
-doc.InsertAt 0, 0, header
