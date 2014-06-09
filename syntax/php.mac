@@ -11,13 +11,16 @@ Include( ".\html_base.mac" )
 Set rPhp=html.CreateRegion( COLOR_DEFAULT, "<\?(php)?(?![a-zA-Z0-9_\-])", "+?>+", False )
 
 'comment
-Set rPhpBlockComment=html.CreateRegion( COLOR_COMMENT1, "+/*+", "+*/+", False )
+Set rPhpBlockComment=html.CreateRegion( COLOR_COMMENT2, "+/*+", "+*/+", False )
 Set rPhpLineComment=html.CreateRegion( COLOR_COMMENT1, "+//+", "$", False )
 Set rPhpLineCommentSharp=html.CreateRegion( COLOR_COMMENT1, "+#+", "$", False )
-Set rPhpEOT=html.CreateRegion( COLOR_COMMENT2, "+<<<EOT+", "+EOT;+", True )
+Set rPhpEOT=html.CreateRegion( COLOR_STRING1, "+<<<EOT+", "+EOT;+", True )
 'string
-Set rPhpString2=html.CreateStringRegion( COLOR_STRING1, """", "\", True )
-Set rPhpString1=html.CreateStringRegion( COLOR_STRING1, "'", "\", True )
+Set rPhpString1=html.CreateStringRegion( COLOR_STRING1, """", "\", True )
+Set rPhpString2=html.CreateStringRegion( COLOR_STRING2, "'", "\", True )
+'php vars in string
+rPhpEOT.AddItem( html.CreateItem(COLOR_VAR, "\$\w+|\{\$.+\}", False) )
+rPhpString1.AddItem( html.CreateItem(COLOR_VAR, "(?=[^\\])\$\w+|\{\$.+?\}", False) )
 
 rPhp.AddRegion( rPhpEOT )
 rPhp.AddRegion( rPhpBlockComment )

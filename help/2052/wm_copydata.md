@@ -1,7 +1,7 @@
 EverEdit支持使用WM_COPYDATA进行简单的数据传递。支持文本的获取、删除、增加，光标的移动和获取操作等。
 
 具体的flag值如下：
-```
+```c
 #define COPYDATA_GETTEXTW				100
 #define COPYDATA_GETTEXTUTF8			101
 #define COPYDATA_CLEARTEXT				102
