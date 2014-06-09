@@ -5,10 +5,8 @@
 EverEdit is a shareware, you can download or contribute **add-ons** for EverEdit here, such as plug-ins, syntax files, macros, themes, templates, snippets and language files!
 
 ##Links
-* [Documents](https://github.com/everedit/addons/tree/master/help)
 * [Syntax Files](https://github.com/everedit/addons/tree/master/syntax)
 * [Themes](https://github.com/everedit/addons/tree/master/theme)
-* [Scripts](https://github.com/everedit/addons/tree/master/macro)
-* [Mode](https://github.com/everedit/addons/tree/master/mode)
-* [Languages](https://github.com/everedit/addons/tree/master/lang)
+* [Calltip](https://github.com/everedit/addons/tree/master/calltip)
+* [Snippet](https://github.com/everedit/addons/tree/master/snippet)
 * [Forum](http://forum.everedit.net)
